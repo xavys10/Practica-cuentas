@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "ec855ef6-3927-46a8-bd3f-98027edfa9d9",
+		"name": "TestPruebaFHU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\":\"Carapungo\",\n\t\"age\":30,\n\t\"gender\":\"masculino\",\n\t\"identification\":\"2222222222\",\n\t\"name\":\"Juan Cortez\",\n\t\"phone\":\"0914256331\",\n\t\"status\":true,\n\t\"password\":\"Test12345\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCustomer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"address\":\"La Gasca\",\r\n\t\"age\":30,\r\n\t\"gender\":\"masculino\",\r\n\t\"identification\":\"222222222\",\r\n\t\"name\":\"Pedro Benitez\",\r\n\t\"phone\":\"098535878\",\r\n\t\"status\":true,\r\n\t\"password\":\"Test12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCustomer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"number\":\"000000002\",\n\"initialBalance\":2000.00,\n\"status\":true,\n\"type\":\"corriente\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/account/customer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAccount",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/account/customer/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"customer",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultAccount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAccount",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateMovement",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var current_timestamp = new Date();",
+							"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"value\":1000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/movement/customer/1/account/000000001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"movement",
+						"customer",
+						"1",
+						"account",
+						"000000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultMovement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MovementsReport",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/report/customer/1/startDate/19-03-2022/endDate/19-03-2022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"report",
+						"customer",
+						"1",
+						"startDate",
+						"19-03-2022",
+						"endDate",
+						"19-03-2022"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
